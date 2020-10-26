@@ -1,11 +1,14 @@
 package allegro.pages;
 
+import allegro.helpers.SeleniumHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AllegroHomePage {
+
+    SeleniumHelper seleniumHelper;
 
     @FindBy(xpath = "//input[@type='search']")
     private WebElement searchInput;
@@ -18,6 +21,7 @@ public class AllegroHomePage {
 
     public AllegroHomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
+        this.seleniumHelper = new SeleniumHelper(driver);
     }
 
     public void closeConsent() {
