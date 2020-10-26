@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class AllegroHomePage {
 
     SeleniumHelper seleniumHelper;
@@ -19,6 +21,9 @@ public class AllegroHomePage {
     @FindBy(xpath = "//button[@data-role='close-and-accept-consent']")
     private WebElement closeCookieConsent;
 
+    @FindBy(xpath = "//span[@data-type='PRIMARY']")
+    private List<WebElement> primaryCategory;
+
     public AllegroHomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.seleniumHelper = new SeleniumHelper(driver);
@@ -31,6 +36,7 @@ public class AllegroHomePage {
     public void sendKeysToSearchInput(String productName) {
         searchInput.sendKeys(productName);
         submitButton.click();
+
     }
 
 
