@@ -14,7 +14,7 @@ public class FindIphoneTest extends BaseTest{
         allegroHomePage.closeConsent();
         allegroHomePage.sendKeysToSearchInput(productName, categoryName);
         assertEquals(productListPage.getTheSearchText(), productName.toLowerCase());
-        assertEquals(productListPage.getSelectedOption(), categoryName+"dd");
+        assertEquals(productListPage.getSelectedOption(), categoryName);
     }
 
     @Test (priority = 1)
