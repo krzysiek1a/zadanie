@@ -7,6 +7,8 @@
 * selenium
 * testng 
 * maven
+-----------
+* Cucumber BDD (on branch: cucumberBdd)
 
 ## Features
 
@@ -16,7 +18,12 @@
 * Log4j2
 * screenshot on fail
 * data provider
-
+----------
+## for Cucumber:
+* page object (on branch: cucumberBdd)
+* Cucumber report
+* Log4j2
+* data provider
 ## Usage
 
 ```
