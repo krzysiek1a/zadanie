@@ -18,7 +18,7 @@ public class FindIphoneTest extends BaseTest{
     }
 
     @Test (dependsOnMethods = {"findIphone"})
-    public void findCorrectColor() {
+    public void validatePrice() {
         productListPage.clickBlackColor();
         assertEquals(productListPage.getNumberOfPhones(), productListPage.getNumberOfproductsOnThePage());
         productListPage.getHighestPrice();
