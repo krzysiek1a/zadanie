@@ -14,10 +14,10 @@ public class FindIphoneTest extends BaseTest{
         allegroHomePage.closeConsent();
         allegroHomePage.sendKeysToSearchInput(productName, categoryName);
         assertEquals(productListPage.getTheSearchText(), productName.toLowerCase());
-        assertEquals(productListPage.getSelectedOption(), categoryName);
+        assertEquals(productListPage.getSelectedOption(), categoryName+"dd");
     }
 
-    @Test (dependsOnMethods = {"findIphone"})
+    @Test (priority = 1)
     public void validatePrice() {
         productListPage.clickBlackColor();
         assertEquals(productListPage.getNumberOfPhones(), productListPage.getNumberOfproductsOnThePage());

@@ -1,14 +1,14 @@
 package allegro.test;
 
 import allegro.helpers.Base;
+import allegro.helpers.TestListener;
 import allegro.pages.AllegroHomePage;
 import allegro.pages.ProductListPage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 
+@Listeners(TestListener.class)
 public abstract class BaseTest extends Base {
 
     AllegroHomePage allegroHomePage;

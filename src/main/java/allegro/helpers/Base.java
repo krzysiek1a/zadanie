@@ -13,10 +13,10 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class Base {
-    public WebDriver driver;
-    public Properties prop;
+    public static WebDriver driver;
+    public static Properties prop;
 
-    public WebDriver initializeDriver() {
+    public static WebDriver initializeDriver() {
         prop = new Properties();
 
         FileInputStream fis = null;

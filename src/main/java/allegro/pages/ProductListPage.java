@@ -54,6 +54,12 @@ public class ProductListPage {
 
     public void clickBlackColor() {
         blackColor.click();
+        //TODO
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getNumberOfPhones() {
@@ -69,7 +75,6 @@ public class ProductListPage {
     }
 
     public void getHighestPrice() {
-        seleniumHelper.waitForElementToBeDisplayed(prices.get(1));
         List<String> price = prices.stream()
                 .filter(e -> e.getText()
                         .contains("zł"))
