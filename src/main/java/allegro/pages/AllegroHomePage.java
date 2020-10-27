@@ -33,9 +33,16 @@ public class AllegroHomePage {
         closeCookieConsent.click();
     }
 
-    public void sendKeysToSearchInput(String productName) {
+    public void sendKeysToSearchInput(String productName, String categoryName) {
         searchInput.sendKeys(productName);
-        submitButton.click();
+        WebElement category = primaryCategory
+                .stream()
+                .filter(element -> element.getText().contains(categoryName))
+                .findFirst()
+                .orElse(null);
+        assert category != null;
+        category.click();
+
 
     }
 
