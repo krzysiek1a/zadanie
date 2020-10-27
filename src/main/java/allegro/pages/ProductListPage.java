@@ -19,6 +19,7 @@ public class ProductListPage {
 
     public static Logger log = LogManager.getLogger(ProductListPage.class.getName());
     SeleniumHelper seleniumHelper;
+    Double maxPrice;
 
     @FindBy(xpath = "//span[contains(text(),'szukasz')]/following-sibling::span")
     private WebElement searchText;
@@ -88,9 +89,12 @@ public class ProductListPage {
                 .map(Double::valueOf)
                 .collect(Collectors.toList());
 
-        Double max = Collections.max(collect);
-        log.info("Najdroższy telefon na stronie kosztuje " + max + " zł");
-        log.info(max + " zł + 23% = " + seleniumHelper.round(max * 1.23, 2));
+        maxPrice = Collections.max(collect);
+        log.info("Najdroższy telefon na stronie kosztuje " + maxPrice + " zł");
 
+    }
+
+    public void addpercentToPrice() {
+        log.info(maxPrice + " zł + 23% = " + seleniumHelper.round(maxPrice * 1.23, 2));
     }
 }
