@@ -27,9 +27,7 @@
 ## Usage
 
 ```
-run testng.xml file
-or
-mvn test
+run test with test runner file for Cucumber
 
 in src/main/resources/ exist data.property file where you can change the borwser (chrome, firefox) 
 and run in headless mode adding to the name of borowser headless (eg. chromeheadless)
