@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/java/features/allegro.feature",
-        glue = "stepDefinitions")
+        glue = "stepDefinitions",
+        plugin = {"html:target/cucumber-reports/cucumber.html"})
 public class AllegroTestRunner {
 }

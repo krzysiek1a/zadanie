@@ -7,10 +7,11 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.junit.Cucumber;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 import static allegro.helpers.Base.initializeDriver;
-import static org.testng.Assert.assertEquals;
 
 public class AllegroStepDefinitions {
 
@@ -34,8 +35,8 @@ public class AllegroStepDefinitions {
     public void wpisujemy_w_wyszukiwarke(String productName) {
         allegroHomePage.closeConsent();
         allegroHomePage.sendKeysToSearchInput(productName, "Apple");
-        assertEquals(productListPage.getTheSearchText(), productName.toLowerCase());
-        assertEquals(productListPage.getSelectedOption(), "Apple");
+        Assert.assertEquals(productListPage.getTheSearchText(), productName.toLowerCase());
+        Assert.assertEquals(productListPage.getSelectedOption(), "Apple");
     }
 
     @When("wybieramy kolor czarny")
@@ -45,7 +46,7 @@ public class AllegroStepDefinitions {
 
     @When("zliczamy ilość wyświetlonych telefonów na pierwszej stronie wyników i ilość prezentujemy w consoli")
     public void zliczamy_ilość_wyświetlonych_telefonów_na_pierwszej_stronie_wyników_i_ilość_prezentujemy_w_consoli() {
-        assertEquals(productListPage.getNumberOfPhones(), productListPage.getNumberOfproductsOnThePage());
+        Assert.assertEquals(productListPage.getNumberOfPhones(), productListPage.getNumberOfproductsOnThePage());
     }
 
     @Then("szukamy największej ceny na liście i wyświetlamy w konsoli")
@@ -57,16 +58,6 @@ public class AllegroStepDefinitions {
     public void największej_ceny_dodajemy(String string) {
         productListPage.addpercentToPrice();
     }
-
-
-
-
-
-
-
-
-
-
 
     @After
     public void tearDown() {
