@@ -15,6 +15,7 @@
 * Extent report
 * Log4j2
 * screenshot on fail
+* data provider
 
 ## Usage
 

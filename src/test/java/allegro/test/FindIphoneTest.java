@@ -1,16 +1,14 @@
 package allegro.test;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 public class FindIphoneTest extends BaseTest{
 
-    private String productName = "Iphone 11";
-    private String categoryName = "Apple";
-
-    @Test
-    public void findIphone() {
+    @Test(dataProvider = "getData")
+    public void findIphone(String productName, String categoryName) {
         allegroHomePage.closeConsent();
         allegroHomePage.sendKeysToSearchInput(productName, categoryName);
         assertEquals(productListPage.getTheSearchText(), productName.toLowerCase());
@@ -23,4 +21,11 @@ public class FindIphoneTest extends BaseTest{
         assertEquals(productListPage.getNumberOfPhones(), productListPage.getNumberOfproductsOnThePage());
         productListPage.getHighestPrice();
     }
+
+    @DataProvider
+    public Object [][] getData() {
+        return new Object[][]{{"Iphone 11", "Apple"}};
+    }
+
+
 }
