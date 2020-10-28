@@ -1,6 +1,7 @@
 package allegro.pages;
 
 import allegro.helpers.SeleniumHelper;
+import io.cucumber.java.eo.Do;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -94,7 +95,9 @@ public class ProductListPage {
 
     }
 
-    public void addpercentToPrice() {
-        log.info(maxPrice + " zł + 23% = " + seleniumHelper.round(maxPrice * 1.23, 2));
+    public void addpercentToPrice(String vat) {
+        int vatPercent = Integer.parseInt(vat);
+        double vatDouble =1 + (double) vatPercent / 100;
+        log.info(maxPrice + " zł + 23% = " + seleniumHelper.round(maxPrice * vatDouble, 2));
     }
 }

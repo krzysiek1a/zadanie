@@ -55,8 +55,8 @@ public class AllegroStepDefinitions {
     }
 
     @Then("największej ceny dodajemy {string}")
-    public void największej_ceny_dodajemy(String string) {
-        productListPage.addpercentToPrice();
+    public void największej_ceny_dodajemy(String vat) {
+        productListPage.addpercentToPrice(vat);
     }
 
     @After
