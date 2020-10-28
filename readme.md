@@ -14,9 +14,8 @@
 
 * page object
 * test listeners
-* Extent report
+* Extent report with a screenshot on fail (not in cucumber)
 * Log4j2
-* screenshot on fail
 * data provider
 ----------
 ## for Cucumber:
