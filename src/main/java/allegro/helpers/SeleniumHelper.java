@@ -1,18 +1,17 @@
 package allegro.helpers;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.nio.file.Files;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.time.LocalTime;
+import java.util.Date;
 
 public class SeleniumHelper {
 
@@ -38,16 +37,20 @@ public class SeleniumHelper {
     }
 
     public static String takeScreenshot(String methodName) {
-        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
-        File screenshotFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
-        File destinationPath = new File("src\\main\\resources\\reports\\screens\\" + methodName + LocalTime.now().getNano() + ".png");
-        String path = destinationPath.getAbsolutePath();
+        String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File source = ts.getScreenshotAs(OutputType.FILE);
+
+        String destinationPath = System.getProperty("user.dir")
+                + "\\src\\main\\resources\\reports\\screens\\" + methodName +"_"+ dateName + ".png";
+        File finalDestination = new File(destinationPath);
         try {
-            Files.copy(screenshotFile.toPath(), destinationPath.toPath());
+            FileUtils.copyFile(source, finalDestination);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return path;
+        System.out.println(destinationPath);
+        return destinationPath;
     }
 
 }

@@ -1,12 +1,12 @@
 package allegro.test;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 public class FindIphoneTest extends BaseTest{
-
     @Test(dataProvider = "getData")
     public void findIphone(String productName, String categoryName) {
         allegroHomePage.closeConsent();

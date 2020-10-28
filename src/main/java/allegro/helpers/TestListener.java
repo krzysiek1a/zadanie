@@ -3,9 +3,7 @@ package allegro.helpers;
 import allegro.reports.ExtentReporter;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
-import com.aventstack.extentreports.model.Media;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -29,14 +27,13 @@ public class TestListener extends Base implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        String testMethodName = iTestResult.getMethod().getMethodName();
-        String path = SeleniumHelper.takeScreenshot(testMethodName);
         try {
-            test.fail("Test Failed", MediaEntityBuilder.createScreenCaptureFromPath(path).build());
+            test.log(Status.FAIL, "Failed Case is: " + iTestResult.getName());
+            test.log(Status.FAIL, iTestResult.getName()+" FAIL with error " + iTestResult.getThrowable());
+            test.addScreenCaptureFromPath(SeleniumHelper.takeScreenshot(iTestResult.getMethod().getMethodName()));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
