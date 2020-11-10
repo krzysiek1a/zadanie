@@ -77,20 +77,17 @@ public class ProductListPage {
     }
 
     public void getHighestPrice() {
-        List<String> price = prices.stream()
+        List<Double> price = prices.stream()
                 .filter(e -> e.getText()
                         .contains("zł"))
                 .map(WebElement::getText)
-                .collect(Collectors.toList());
-
-        List<Double> collect = price.stream()
                 .map(e -> e.replace(" ", ""))
                 .map(e -> e.replace(",", "."))
                 .map(e -> e.replace("zł", ""))
                 .map(Double::valueOf)
                 .collect(Collectors.toList());
 
-        Double max = Collections.max(collect);
+        Double max = Collections.max(price);
         log.info("Najdroższy telefon na stronie kosztuje " + max + " zł");
         log.info(max + " zł + 23% = " + seleniumHelper.round(max * 1.23, 2));
 
